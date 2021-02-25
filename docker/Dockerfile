@@ -27,12 +27,21 @@ RUN apt-get install -y --allow-downgrades --allow-change-held-packages --no-inst
         ibverbs-utils \
         rdmacm-utils \
         libibverbs-dev \
+        openssh-client \
+        openssh-server \
         python3 \
         python3-dev \
         python3-pip \
         python3-setuptools \
         libnccl2=2.4.7-1+cuda10.0 \
         libnccl-dev=2.4.7-1+cuda10.0
+    
+
+# Allow OpenSSH to talk to containers without asking for confirmation
+RUN mkdir -p /var/run/sshd && \
+    cat /etc/ssh/ssh_config | grep -v StrictHostKeyChecking > /etc/ssh/ssh_config.new && \
+    echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config.new && \
+    mv /etc/ssh/ssh_config.new /etc/ssh/ssh_config
 
 # install framework
 # note: for tf <= 1.14, you need gcc-4.9
