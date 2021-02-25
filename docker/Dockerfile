@@ -5,8 +5,8 @@ ARG http_proxy
 
 ARG BYTEPS_BASE_PATH=/usr/local
 ARG BYTEPS_PATH=$BYTEPS_BASE_PATH/byteps
-ARG BYTEPS_GIT_LINK=https://github.com/bytedance/byteps
-ARG BYTEPS_BRANCH=master
+ARG BYTEPS_GIT_LINK=https://github.com/ChenYuHo/byteps.git
+ARG BYTEPS_BRANCH=osdi
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
